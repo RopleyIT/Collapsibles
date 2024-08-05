@@ -1,0 +1,43 @@
+﻿<div class="tiles">
+    <SectionContent SectionName="TopRow">
+            @foreach (CollapsibleTile tile in Tiles)
+            {
+                if (!tile.Visible)
+                {
+                    <button style="margin:0 0.2em 0 0.2em;" class="btn btn-outline-primary btn-sm"
+                            @onclick=@(()=>ShowTile(tile))>
+                        @(tile.Caption)
+                    </button>
+                }
+            }
+    </SectionContent>
+    <div class="tilecontent">
+    <CascadingValue Value="this">
+            @ChildContent
+        </CascadingValue>
+    </div>
+</div>
+
+@code {
+    // The set of tiles being displayed inside this 
+    // CollapsibleTiles component
+
+    public List<CollapsibleTile> Tiles { get; set; } = new List<CollapsibleTile>();
+
+    public void AddTile(CollapsibleTile tile)
+    {
+        Tiles.Add(tile);
+        tile.VisibleChanged = new EventCallbackFactory()
+            .Create<CollapsibleTile>(this, TileVisibilityChanged);
+        StateHasChanged();
+    }
+
+    private void ShowTile(CollapsibleTile tile)
+        => tile.Visible = true;
+
+    private void TileVisibilityChanged(CollapsibleTile tile)
+        => StateHasChanged();
+
+    [Parameter]
+    public RenderFragment? ChildContent { get; set; }
+}

@@ -1,0 +1,9 @@
+﻿.tilediv {
+    border:1px solid gray;
+    position: relative;
+}
+.closediv {
+    position: absolute;
+    top: 0;
+    right: 0;
+}
