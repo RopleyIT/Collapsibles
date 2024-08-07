@@ -4,9 +4,15 @@
 <PageTitle>Collapsible Demo</PageTitle>
 
 <h3>Collapsible Demo</h3>
-<CollapsibleTiles>
-    <CollapsibleTile Flex="1 1 auto" Caption="Left tile">Hello,<br />I am the left tile!</CollapsibleTile>
-    <CollapsibleTile Flex="1 1 auto" Caption="Right tile">And I am the right tile...</CollapsibleTile>
-</CollapsibleTiles>
+<TileSet>
+    <Tile Flex="1 1 auto" Caption="Left tile">Hello,<br />I am the left tile!</Tile>
+    <TileColumn Flex="1 1 auto">
+        <Tile Flex="1 1 auto" Caption="Top-right tile">And I am the top right tile...</Tile>
+        <TileRow Flex="1 1 auto">
+            <Tile Flex="1 1 auto" Caption="Bottom-inner tile">And I am the <br />bottom inner tile...</Tile>
+            <Tile Flex="1 1 auto" Caption="Bottom-corner tile">And I am the <br />bottom corner tile...</Tile>
+        </TileRow>
+    </TileColumn>
+</TileSet>
 @code {
 }

@@ -1,6 +1,6 @@
-﻿@if (Visible)
-{
-    <div class="tilediv" style=@($"flex: {Flex};")>
+﻿@using Collapsibles.Components
+@implements ITileNode
+    <div class="tilediv" style=@DisplayStyle>
         <div class="closediv">
             <button class="btn btn-outline-light btn-sm" 
                 @onclick=@(()=>{Visible=false;})>
@@ -9,11 +9,13 @@
         </div>
         @ChildContent
     </div>
-}
 
 @code {
     [CascadingParameter]
-    private CollapsibleTiles? Parent { get; set; } = null;
+    private TileSet? TileContainer { get; set; } = null;
+
+    [CascadingParameter]
+    private List<ITileNode>? Parent { get; set; } = null;
 
     /// <summary>
     /// Main axis flex settings for this flex-item. Has the
@@ -25,18 +27,20 @@
     [Parameter]
     public string Flex { get; set; } = "1 1 auto";
 
+    private string DisplayStyle => Visible ? $"flex: {Flex};" : "display: none;";
+
     [Parameter]
     public RenderFragment? ChildContent { get; set; }
 
     protected override void OnInitialized()
     {
         base.OnInitialized();
-        if(Parent != null)
-            Parent.AddTile(this);
+        TileContainer?.AddTile(this);
+        Parent?.Add(this);
         Visible = !InitiallyHidden; // Set initial visibility
     }
 
-    public EventCallback<CollapsibleTile> VisibleChanged { get; set; }
+    public EventCallback<Tile> VisibleChanged { get; set; }
 
     private bool visible = true;
     public bool Visible 
@@ -57,4 +61,7 @@
 
     [Parameter]
     public string Caption { get; set; } = string.Empty;
+
+    private static List<ITileNode> children = new();
+    public List<ITileNode> Children => children;
 }
