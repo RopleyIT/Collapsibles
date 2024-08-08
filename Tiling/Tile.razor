@@ -3,13 +3,19 @@
     <div class="closediv">
         <button class="btn btn-outline-light btn-sm custom-close"
                 @onclick=@(()=>{Visible=false;})>
-            <img src="close.svg" />
+            <img src="_content/Tiling/close.svg" />
         </button>
     </div>
     @ChildContent
 </div>
 
 @code {
+    // Note the close.svg resource used on a button in the
+    // markup above. Always put graphical resources like
+    // this into the wwwroot folder of the component
+    // library project, then reference it using the relative
+    // URL "_content/{ProjectLibName}/resourceFileName"
+
     [CascadingParameter]
     private TileSet? TileContainer { get; set; } = null;
 

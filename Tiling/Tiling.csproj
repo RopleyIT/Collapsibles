@@ -15,4 +15,14 @@
     <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="8.0.7" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Include="wwwroot\close.svg" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Update="wwwroot\close.svg">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
 </Project>
