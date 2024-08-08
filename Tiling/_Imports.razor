@@ -1,0 +1,19 @@
+﻿@*
+    Remember to set up interactive server mode so that the minimisation
+    buttons in the page header when clicked will allow the hidden tiles
+    to be redisplayed. See the truncated excerpt from app.razor below:
+
+    <head>
+        . . .
+        <HeadOutlet @rendermode="InteractiveServer"/>
+    </head>
+
+    <body>
+        <Routes @rendermode="InteractiveServer"/>
+        . . .
+    </body>
+*@
+
+@using Microsoft.AspNetCore.Components.Web
+@using Microsoft.AspNetCore.Components.Sections
+

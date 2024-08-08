@@ -1,14 +1,13 @@
-﻿@using Collapsibles.Components
-@implements ITileNode
-    <div class="tilediv" style=@DisplayStyle>
-        <div class="closediv">
-            <button class="btn btn-outline-light btn-sm" 
+﻿@implements ITileNode
+<div class="tilediv" style=@DisplayStyle>
+    <div class="closediv">
+        <button class="btn btn-outline-light btn-sm custom-close"
                 @onclick=@(()=>{Visible=false;})>
-                <img src="close.svg" />
-            </button>
-        </div>
-        @ChildContent
+            <img src="close.svg" />
+        </button>
     </div>
+    @ChildContent
+</div>
 
 @code {
     [CascadingParameter]
@@ -43,12 +42,12 @@
     public EventCallback<Tile> VisibleChanged { get; set; }
 
     private bool visible = true;
-    public bool Visible 
+    public bool Visible
     {
         get => visible;
         set
         {
-            if(visible != value)
+            if (visible != value)
             {
                 visible = value;
                 VisibleChanged.InvokeAsync(this);

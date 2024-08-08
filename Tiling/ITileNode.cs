@@ -1,4 +1,4 @@
-﻿namespace Collapsibles.Components;
+﻿namespace Tiling;
 public interface ITileNode
 {
     List<ITileNode> Children { get; }

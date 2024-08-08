@@ -1,0 +1,18 @@
+﻿.tilediv {
+    border: 1px solid gray;
+    position: relative;
+}
+
+.closediv {
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+.closediv:hover {
+    background-color: orangered;
+}
+
+.custom-close {
+    background-color: transparent;
+    border: none;
+}
