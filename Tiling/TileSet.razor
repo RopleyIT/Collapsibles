@@ -1,18 +1,16 @@
-﻿<div class="tiles">
+﻿<div class="tile-set" style=@DisplayStyle>
     <SectionContent SectionName="TopRow">
         @foreach (Tile tile in Children)
         {
-            if (!tile.Visible)
-            {
-                <button style="margin:0 0.2em 0 0.2em;" 
-                        class="btn btn-outline-primary btn-sm"
-                        @onclick=@(()=>ShowTile(tile))>
-                    @(tile.Caption)
-                </button>
-            }
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="checkbox" 
+                    value="@tile.Caption" checked="@tile.Visible" 
+                    @onchange="@((args) => ShowTile(tile, (bool?)args.Value??false))">
+                <label class="form-check-label" for="inlineCheckbox1">@tile.Caption</label>
+            </div>
         }
     </SectionContent>
-    <div class="tilecontent">
+    <div class="tile-content" style="width:100%;height:100%;">
         <CascadingValue Value="this">
             @ChildContent
         </CascadingValue>

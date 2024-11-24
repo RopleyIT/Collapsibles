@@ -1,4 +1,11 @@
-<Project Sdk="Microsoft.NET.Sdk.Razor">
+﻿<Project Sdk="Microsoft.NET.Sdk.Razor">
+
+  <PropertyGroup Label="Globals">
+    <SccProjectName>%24/DSDSWebApplicationProjects/DSDSUserInterfaceApp/Tiling</SccProjectName>
+    <SccProvider>{4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}</SccProvider>
+    <SccAuxPath>http://devops2019:8080/tfs/amssprojects</SccAuxPath>
+    <SccLocalPath>.</SccLocalPath>
+  </PropertyGroup>
 
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>

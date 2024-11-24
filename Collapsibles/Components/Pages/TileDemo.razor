@@ -1,0 +1,41 @@
+﻿@using Tiling
+@page "/tiles"
+@rendermode InteractiveServer
+
+<PageTitle>Collapsible Tiles Demo</PageTitle>
+
+<h3>Collapsible Tiles Demo</h3>
+<TileSet @ref="tileSet">
+    <Tile Flex="0 1 auto" Caption="Filter panel">
+        <div style="width: 10em; height: 24em;" class="tile-content">
+            This panel gets hidden when the button in the panel diagonally below and right is pressed.
+        </div>
+    </Tile>
+    <TileColumn Flex="1 1 auto">
+        <Tile Flex="1 1 auto" Caption="Map">
+            <div style="height: 24em;" class="tile-content">
+                The big panel at the top right side
+            </div>
+        </Tile>
+        <TileRow Flex="1 1 auto">
+            <Tile Flex="1 1 auto" Caption="Left lower panel">
+                <div class="tile-content">
+                    Press the button below to hide the leftmost tile<br/>&nbsp;<br/>
+                    <button class="btn btn-primary" @onclick=@(()=>HideFilterPanel()) >Hide left panel</button>
+                </div>
+            </Tile>
+            <Tile Flex="1 1 auto" Caption="Right lower panel">
+                <div class="tile-content">
+                    And this is the <br />bottom right tile...
+                </div>
+            </Tile>
+        </TileRow>
+    </TileColumn>
+</TileSet>
+@code {
+    TileSet? tileSet;
+    void HideFilterPanel()
+    {
+        tileSet?.ShowTile("Filter panel", false);
+    }
+}
