@@ -1,0 +1,10 @@
+﻿@implements ITileNode
+<div class="tilediv" style=@DisplayStyle>
+    <div class="closediv">
+        <button class="btn btn-outline-light btn-sm custom-close"
+                @onclick=@(()=>{Visible=false;})>
+            <img src="_content/Tiling/close.svg" />
+        </button>
+    </div>
+    @ChildContent
+</div>

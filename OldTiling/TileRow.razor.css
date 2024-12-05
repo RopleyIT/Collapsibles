@@ -1,4 +1,4 @@
-﻿.tile-row {
+﻿.tilerow {
     display: flex;
     flex-flow: row nowrap;
     align-items: stretch;

@@ -1,0 +1,31 @@
+﻿<div class="leftnav">
+    <input type="checkbox" title="Navigation menu" class="navbar-toggler" checked="@isChecked" @onchange="(e)=>checkBoxChanged(e)" />
+    <!--<a class="navbar-brand" href="">Layout Trials</a>-->
+</div>
+<div class="midnav">
+</div>
+<div class="rightnav px-4">
+    <SectionOutlet SectionName="tile-checkboxes" />
+</div>
+
+@code {
+
+    [Parameter]
+    public bool Checked { get => isChecked; set => isChecked = value; }
+
+    [Parameter]
+    public EventCallback<bool> CheckedChanged { get; set; }
+
+    protected override void OnParametersSet()
+    {
+        isChecked = Checked;
+    }
+
+    bool isChecked = false;
+
+    public async Task checkBoxChanged(ChangeEventArgs e)
+    {
+        isChecked = (bool)(e.Value ?? true);
+        await CheckedChanged.InvokeAsync(isChecked);
+    }
+}

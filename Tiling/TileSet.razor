@@ -1,18 +1,21 @@
-﻿<div class="tiles">
-    <SectionContent SectionName="TopRow">
-        @foreach (Tile tile in Children)
+﻿@using Microsoft.AspNetCore.Components.Sections 
+@using Microsoft.AspNetCore.Components.Forms
+<div class="tile-set" style=@DisplayStyle>
+    <SectionContent SectionName="tile-checkboxes">
+        @foreach (Tile tile in Children.Where(t=>t.Selectable))
         {
-            if (!tile.Visible)
-            {
-                <button style="margin:0 0.2em 0 0.2em;" 
-                        class="btn btn-outline-primary btn-sm"
-                        @onclick=@(()=>ShowTile(tile))>
-                    @(tile.Caption)
-                </button>
-            }
+            <div class="form-check form-check-inline">
+                <label class="form-check-label">
+                    <InputCheckbox
+                        Value=@(tile.Visible)
+                        ValueChanged=@(v => ShowTile(tile.Caption, v))
+                        ValueExpression="()=>tile.Visible"/>
+                    @tile.Caption
+				</label>
+            </div>
         }
     </SectionContent>
-    <div class="tilecontent">
+    <div class="tile-content" style="width:100%;height:100%;">
         <CascadingValue Value="this">
             @ChildContent
         </CascadingValue>

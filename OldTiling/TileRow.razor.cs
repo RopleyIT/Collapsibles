@@ -28,35 +28,7 @@ namespace Tiling
         [Parameter]
         public string Flex { get; set; } = "1 1 auto";
 
-        /// <summary>
-        /// Set the height of the flex row so that all children can be
-        /// stretched to fit this height, rather than to the height of
-        /// the tallest element not hidden.
-        /// </summary>
-        [Parameter]
-        public string Height { get; set; } = string.Empty;
-
-        /// <summary>
-        /// Set the width of the row so that all children can be
-        /// spread to fit this width, rather than to the width of
-        /// the sum of the child widths.
-        /// </summary>
-        [Parameter]
-        public string Width { get; set; } = string.Empty;
-
-
-        private string DisplayStyle
-        {
-            get
-            {
-                string style = $"flex: {Flex};";
-                if (!string.IsNullOrWhiteSpace(Width))
-                    style += " width: " + Width + ";";
-                if (!string.IsNullOrWhiteSpace(Height))
-                    style += " height: " + Height + ";";
-                return Visible ? style : "display: none;";
-            }
-        }
+        private string DisplayStyle => Visible ? $"flex: {Flex};" : "display: none;";
 
         [Parameter]
         public RenderFragment? ChildContent { get; set; }

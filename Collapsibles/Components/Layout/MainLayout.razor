@@ -1,23 +1,38 @@
-﻿@using Microsoft.AspNetCore.Components.Sections
+﻿@inject IHostEnvironment HostEnvironment
 @inherits LayoutComponentBase
-
-<div class="page">
-    <div class="sidebar">
-        <NavMenu />
-    </div>
-
-    <main>
-        <div class="top-row px-4">
-            <SectionOutlet SectionName="TopRow" />
+<CascadingValue Value="this">
+    <div class="page">
+        <div class="pagetop">
+            <NavTop @bind-Checked=showMenu />
         </div>
-        <article class="content px-4">
-            @Body
-        </article>
-    </main>
-</div>
+        <div class="bodyrow">
+            <NavMenu ShowMenu="@showMenu" />
+            <main>
+                <article class="content px-4" style="height: calc(100vh - 5rem);">
+                    @Body
+                </article>
+            </main>
+        </div>
+    </div>
+</CascadingValue>
 
-<div id="blazor-error-ui">
-    An unhandled error has occurred.
+<div id="blazor-error-ui" data-nosnippet>
+    @if (HostEnvironment.IsProduction())
+    {
+        <span>An error has occurred</span>
+    }
+    else
+    {
+        <span>An unhandled error has occurred</span>
+    }
     <a href="" class="reload">Reload</a>
     <a class="dismiss">🗙</a>
 </div>
+
+@code {
+    private bool showMenu = true;
+    public void HandleMenuVisibility(bool show)
+    {
+        showMenu = show;
+    }
+}

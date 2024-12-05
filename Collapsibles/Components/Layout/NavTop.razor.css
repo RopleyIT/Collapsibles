@@ -1,0 +1,56 @@
+﻿.leftnav {
+    flex: 0 1 auto;
+    display: flex;
+    align-items: center;
+    /*background-color:cornflowerblue ;*//*rgb(102, 51, 15)*/
+    width: 4.125rem;
+    border-bottom: 1px solid gray;
+}
+
+    .leftnav > a, .leftnav > a:visited {
+        color: white;
+        font-weight: 500;
+        padding-left: 5rem;
+    }
+
+.midnav {
+    flex: 1 1 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 1px solid gray;
+}
+
+.rightnav {
+    flex: 0 1 auto;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    border-bottom: 1px solid gray;
+}
+
+    .rightnav > a, .rightnav > a:visited {
+        color: black;
+        font-weight: 400;
+    }
+
+.navbar-brand {
+    font-size: 1.1rem;
+}
+
+.navbar-toggler {
+    appearance: none;
+    cursor: pointer;
+    width: 3.5rem;
+    height: 2.5rem;
+    color: transparent;
+    position: relative;
+    top: 0rem;
+    left: 0.25rem;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 255, 255, 0.55%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e") no-repeat center/1.75rem rgba(255, 255, 255, 0.1);
+}
+
+    .navbar-toggler:checked {
+        background-color: rgba(255, 255, 255, 0.5);
+    }

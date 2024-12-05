@@ -4,6 +4,12 @@ namespace Tiling
 {
     public partial class Tile
     {
+        // Note the close.svg resource used on a button in the
+        // markup above. Always put graphical resources like
+        // this into the wwwroot folder of the component
+        // library project, then reference it using the relative
+        // URL "_content/{ProjectLibName}/resourceFileName"
+
         [CascadingParameter]
         private TileSet? TileContainer { get; set; } = null;
 
@@ -20,8 +26,7 @@ namespace Tiling
         [Parameter]
         public string Flex { get; set; } = "1 1 auto";
 
-        private string DisplayStyle 
-            => Visible && Selectable ? $"flex: {Flex};" : "display: none;";
+        private string DisplayStyle => Visible ? $"flex: {Flex};" : "display: none;";
 
         [Parameter]
         public RenderFragment? ChildContent { get; set; }
@@ -50,20 +55,13 @@ namespace Tiling
             }
         }
 
-        /// <summary>
-        /// Set to make the tile have a checkbox in the top bar
-        ///  of the page. Clear to make the checkbox vanish.
-        /// </summary>
-        [Parameter]
-        public bool Selectable { get; set; } = true;
-
         [Parameter]
         public bool InitiallyHidden { get; set; } = false;
 
         [Parameter]
         public string Caption { get; set; } = string.Empty;
 
-        private static readonly List<ITileNode> children = [];
+        private static List<ITileNode> children = new();
         public List<ITileNode> Children => children;
     }
 }

@@ -1,0 +1,42 @@
+﻿@using Tiling
+@page "/tiledemo"
+
+<TileSet>
+    <Tile Flex="0 1 auto" Caption="Tall left panel">
+        <div class="p-2" style="width: 10em; height: 32em; background-color:antiquewhite;">
+            LEFT PANEL<br/>
+            A single tile in the<br/>
+            default flex row of<br />
+            the TileSet
+        </div>
+    </Tile>
+    <TileColumn Flex="1 1 auto">
+        <Tile Flex="1 1 auto" Caption="Broad top right panel">
+            <div class="p-2" style="height: 23em; background-color:burlywood;">
+                Upper tile of the TileColumn<br/>
+                to the right of the left panel</div>
+        </Tile>
+        <TileRow Flex="1 1 auto">
+            <Tile Flex="1 1 auto" Caption="Left lower panel">
+                <div class="p-2" style="height:9em; background-color:cadetblue;">
+                    This is the left tile<br />
+                    in the TileRow that is<br/>
+                    the second child of the<br/>
+                    TileColumn to the right<br/>
+                    of the left panel.
+                </div>
+            </Tile>
+            <Tile Flex="1 1 auto" Caption="Right lower panel">
+                <div class="p-2" style="height:9em; background-color:darksalmon;">
+                    This is the right tile<br />
+                    in the TileRow that is<br />
+                    the second child of the<br />
+                    TileColumn to the right<br />
+                    of the left panel.
+                </div>
+            </Tile>
+        </TileRow>
+    </TileColumn>
+</TileSet>
+@code {
+}
