@@ -39,4 +39,9 @@
     </TileColumn>
 </TileSet>
 @code {
+    TileSet? tileSet;
+    void HideFilterPanel()
+    {
+        tileSet?.ShowTile("Filter panel", false);
+    }
 }
